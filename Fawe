@@ -1,0 +1,29 @@
+-- Step 1: Extract max customer_rating_id (after removing prefix and casting to INT)
+WITH trimmed_ids AS (
+  SELECT
+    TRY_CAST(REPLACE(customer_rating_id, 'FAWE-BANK-PARALLEL', '') AS INTEGER) AS rating_id_int
+  FROM faweBankModelsParallelRatingWithIdRel
+),
+max_id_cte AS (
+  SELECT MAX(rating_id_int) AS max_rating_id FROM trimmed_ids
+),
+next_id_cte AS (
+  SELECT
+    CASE
+      WHEN max_rating_id > 0 THEN max_rating_id + 1
+      ELSE 0
+    END AS next_customer_rating_id
+  FROM max_id_cte
+)
+
+-- Step 2: Select distinct relevant columns
+SELECT DISTINCT
+  customer_rating_id,
+  legacy_id,
+  proposed_legal,
+  proposed_bif_rate,
+  proposed_date,
+  expires,
+  updated,
+  updated_by
+FROM faweBankModelsParallelRatingWithIdRel;
