@@ -1040,3 +1040,13 @@ Examples:
 
 if __name__ == "__main__":
     main()
+
+
+# Convert and save to file
+python converter.py -i input.scala -o output.sql
+
+# Convert and print to console
+python converter.py -i input.scala
+
+# With debug mode
+python converter.py -i input.scala -o output.sql --debug
