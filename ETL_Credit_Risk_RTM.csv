@@ -1,0 +1,15 @@
+Requirement ID,Requirement Description,Test Case IDs
+R1,Add new RAT history columns,ETL_CSR_001
+R2,Lag logic with ignore nulls,ETL_CSR_002
+R3,Partition by customer_id,ETL_CSR_003
+R4,Order by customer_start_datetime,ETL_CSR_004
+R5,Default flag override logic,ETL_CSR_005
+R6,Carry-forward RAT segment,ETL_CSR_006
+R7,Exclude PER and SCO,ETL_CSR_007
+R8,Allowed RAT segments only,ETL_CSR_008
+R9,Sub-segmentation logic,ETL_CSR_009
+R10,Exposure class derivation,ETL_CSR_010
+R11,Data lineage & audit,"ETL_CSR_011, ETL_CSR_015"
+R12,Regression protection,ETL_CSR_012
+R13,Null handling,ETL_CSR_013
+R14,Performance & scalability,ETL_CSR_014

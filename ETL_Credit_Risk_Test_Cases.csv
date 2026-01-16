@@ -1,0 +1,16 @@
+Test Case ID,Title,Description,Test Steps,Expected Results,Priority,Type,Requirement ID
+ETL_CSR_001,Verify DDL – New Columns Added,Validate new RAT history columns are created,Deploy DDL and query tables,Columns exist with correct data types,High,Positive,R1
+ETL_CSR_002,Validate LAG Logic for RAT Segment,Verify lag ignore nulls logic,Insert test data and run ETL,Correct last non-null RAT value,High,Positive,R2
+ETL_CSR_003,Validate Partition by Customer,Ensure lag does not cross customers,Load multiple customers and run ETL,Lag calculated per customer,High,Positive,R3
+ETL_CSR_004,Validate Ordering by Start Date,Ensure correct chronological lag,Load out-of-order data,Lag follows datetime order,Medium,Positive,R4
+ETL_CSR_005,Default Flag Override,Validate default flag logic,Set default_flag true,Segmentation overridden,High,Positive,R5
+ETL_CSR_006,Carry Forward RAT Segment,Use last RAT when current null,Null current RAT and run ETL,Historical RAT applied,High,Positive,R6
+ETL_CSR_007,Exclude PER and SCO,Ensure exclusions are respected,Set PER/SCO and run ETL,No overwrite,High,Negative,R7
+ETL_CSR_008,Validate Allowed RAT Values,Reject invalid RAT values,Insert invalid RAT,Invalid ignored,Medium,Negative,R8
+ETL_CSR_009,Sub-Segmentation Logic,Validate subsegment carry forward,Null subsegment,Subsegment derived,Medium,Positive,R9
+ETL_CSR_010,Exposure Class Carry Forward,Validate exposure class continuity,Null exposure class,Exposure inherited,High,Positive,R10
+ETL_CSR_011,Data Lineage Validation,Validate lineage,Trace source to target,Lineage auditable,High,Data Lineage,R11
+ETL_CSR_012,Regression Validation,Ensure no unintended impact,Compare pre/post,Only expected changes,High,Regression,R12
+ETL_CSR_013,Null Handling Stability,Validate stability,Insert all nulls,Job succeeds,Medium,Negative,R13
+ETL_CSR_014,Performance Validation,Validate performance,Run high volume ETL,Within SLA,Medium,Non-Functional,R14
+ETL_CSR_015,Audit & Compliance,Validate audit readiness,Review audit trail,Explainable results,High,Audit,R11

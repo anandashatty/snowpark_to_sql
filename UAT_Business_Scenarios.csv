@@ -1,0 +1,6 @@
+UAT ID,Business Scenario,Expected Outcome
+UAT_01,Historical risk reused when current missing,Risk continuity maintained
+UAT_02,Retail and score customers unchanged,No unintended impact
+UAT_03,Exposure class consistent,Accurate exposure reporting
+UAT_04,Defaulted customers follow rules,Regulatory compliance
+UAT_05,Existing customers unaffected,Business stability
