@@ -1,0 +1,13 @@
+﻿Test Case ID,Title,Description,Test Steps,Expected Results,Priority
+TC_UDM_001,Validate UDM Segment Mapping for Valid Parallel Rating,Ensure UDM segment and subsegment are correctly derived when all conditions are met.,Load data with ingest_date < cutoff_date; Ensure last ii_rat_segment = 'BNK'; Ensure udm_segment ≠ 'PER' or 'SCO'; Ensure ii_rat_segment is null for current ingest_date; Run ETL job.,UDM segment = 'BNK'; UDM subsegment = last ii_rat_subsegment.,High
+TC_UDM_002,"Validate Multiple Segment Types (FIN, FUN, RE, SHI, TOA)",Validate logic across all allowed segment types.,Repeat TC_UDM_001 for each segment type; Validate mapping logic.,UDM segment and subsegment match last ii_rat_segment and subsegment respectively.,High
+TC_UDM_003,Reject Mapping When ii_rat_segment Is Present in Current Ingest,Ensure logic does not apply if ii_rat_segment is not null in current ingest_date.,Load data with ii_rat_segment = 'BNK' in current ingest_date; Run ETL job.,No override of UDM segment/subsegment.,Medium
+TC_UDM_004,Reject Mapping for Excluded UDM Segments,Ensure mapping is skipped when udm_segment is 'PER' or 'SCO'.,Load data with udm_segment = 'PER'; Run ETL job.,No override of UDM segment/subsegment.,Medium
+TC_UDM_005,Validate Legacy Model Segment Mapping Remains Unchanged,Ensure existing model outbound logic is unaffected.,Run ETL with legacy model segment data; Validate model outbound table.,Model segment mapping remains consistent with pre-change logic.,High
+TC_UDM_006,Validate Freeze and Override Precedence,Ensure parallel rating logic is applied after freeze and override logic.,Load data with freeze and override flags; Run ETL job.,Freeze and override logic applied first; parallel rating logic applied afterward.,High
+TC_UDM_007,Validate Data Lineage from Source to UDM,Ensure traceability of segment mapping from source tables to UDM.,Load source data with valid ii_rat_segment history; Run ETL job; Trace lineage from source to UDM.,Lineage clearly shows mapping from last ii_rat_segment to UDM segment.,High
+TC_UDM_008,Audit Trail Validation for Segment Overrides,Ensure audit trail captures override logic application.,Enable audit logging; Run ETL job with override scenario; Review audit logs.,"Audit logs show override applied post-freeze, with segment source and timestamp.",Medium
+,,,,,
+,,,,,
+,,,,,
+ryur,,,,,
